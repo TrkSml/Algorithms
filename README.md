@@ -1,6 +1,9 @@
 # SortingAlgorithms
+
 Some of the sorting algorithms written in Python :
+
 * Selection Sort
+* Gnome Sort
 * Bubble Sort 
 * Shell Sort
 * Quick Sort
