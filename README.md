@@ -1,1 +1,10 @@
 # SortingAlgorithms
+Some of the sorting algorithms written in Python :
+* Selection Sort
+* Bubble Sort 
+* Shell Sort
+* Quick Sort
+* Merge Sort
+* Comb Sort
+* Cocktail Sort ( or Bidirectional Sort )
+* Oleyami Sort ( reviewed Cocktail Sort )
