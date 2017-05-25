@@ -1,7 +1,11 @@
+"""
+Written the 25th of May.
+"""
+
+################# swap function #######################
 def exchange(array,i1,i2):
 		array[i1],array[i2]=array[i2],array[i1]
 		
-
 ################## Selection Sort ######################
 
 def selection_sort(sublist):
