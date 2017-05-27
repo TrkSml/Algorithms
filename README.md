@@ -11,3 +11,4 @@ Some of the sorting algorithms written in Python :
 * Comb Sort
 * Cocktail Sort ( or Bidirectional Sort )
 * Oleyami Sort ( reviewed Cocktail Sort )
+* Counting Sort
