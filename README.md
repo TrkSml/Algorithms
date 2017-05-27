@@ -1,6 +1,6 @@
 # SortingAlgorithms
 
-Some of the sorting algorithms written in Python :
+My personal sorting implementations in Python :
 
 * Selection Sort
 * Gnome Sort
