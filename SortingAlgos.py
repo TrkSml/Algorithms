@@ -177,7 +177,7 @@ def oyelami_sort(list):
 		return list
 
 	list=first_fix(list)
-	direction,not_changed,top,down=1,False,len(list),0
+	direction,not_changed,top,bottom=1,False,len(list),0
   
 	while not not_changed:
   
@@ -193,7 +193,7 @@ def oyelami_sort(list):
         
 		else :
 			count=len(list)-2
-			while(count>down) :
+			while(count>bottom) :
       
 				if list[count]>list[count+1]:
 					not_changed= False
@@ -203,7 +203,7 @@ def oyelami_sort(list):
 		direction*=-1
 		if direction == 1 :
 			top-=1
-			down+=1
+			bottom+=1
 	return list
   
 ################# Counting sort ####################
@@ -224,5 +224,6 @@ def counting_sort(list):
 	for el in list[::-1]:
 			occurences[el]-=1
 			result[occurences[el]]=el
+			
 	return result
 
