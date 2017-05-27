@@ -206,3 +206,23 @@ def oyelami_sort(list):
 			down+=1
 	return list
   
+################# Counting sort ####################
+
+def counting_sort(list):
+	
+	maximum=max(list)
+	count=range(maximum)
+	occurences=[0]*(maximum+1)
+	result=[0]*len(list)
+	
+	for i in range(maximum):
+		occurences[i]+=list.count(i)
+		
+	for i in range(1,maximum):
+		occurences[i]+=occurences[i-1]
+
+	for el in list[::-1]:
+			occurences[el]-=1
+			result[occurences[el]]=el
+	return result
+
