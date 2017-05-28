@@ -1,5 +1,8 @@
 """
 Written the 25th of May.
+
+@author: Tarek Samaali
+
 """
 
 ################# swap function #######################
