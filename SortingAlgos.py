@@ -206,7 +206,7 @@ def oyelami_sort(list):
 			bottom+=1
 	return list
   
-################# Counting sort ####################
+################# Counting Sort ####################
 
 def counting_sort(list):
 	
@@ -227,3 +227,36 @@ def counting_sort(list):
 			
 	return result
 
+################# Radix Sort #######################
+
+def radix_sort(list):
+
+	coef=1
+	determine_elements=lambda integer,coef : (integer%10**(coef))/10**(coef-1)
+	result=[0]*len(list)
+	
+	while True:
+		input_list=[(lambda x:determine_elements(x,coef))(x) for x in list]
+		back_input_list=input_list[::-1]
+		back_list=list[::-1]
+		
+		if all(not el for el in input_list):
+			break
+
+		count=[0]*10
+		
+		for i in range(len(count)):
+			count[i]+=input_list.count(i)
+
+		for i in range(1,len(count)):
+			count[i]+=count[i-1]
+		
+
+		for i in range(len(back_input_list)):
+			count[back_input_list[i]]-=1
+			result[count[back_input_list[i]]]=back_list[i]
+		
+		list=result
+		coef+=1
+
+	return list
