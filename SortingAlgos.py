@@ -260,3 +260,26 @@ def radix_sort(list):
 		coef+=1
 
 	return list
+
+##################### Bucket Sort ###################
+
+def bucket_list(list):
+
+	def calculate_position(value,number_of_values,maximum_value):
+		return int(value*number_of_values/(maximum_value+1))
+
+	number_of_values=len(list)
+	maximum_value=max(list)
+	buckets=[[] for _ in range(number_of_values)]
+
+	for element in list:
+		position_in_buckets=calculate_position(element,number_of_values,maximum_value)
+		buckets[position_in_buckets].append(element)
+		buckets[position_in_buckets]=selection_sort(buckets[position_in_buckets])
+		
+	result=[]
+	for el in buckets:
+		result.extend(el)
+
+	return result
+
