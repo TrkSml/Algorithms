@@ -286,3 +286,16 @@ def bucket_list(list):
 
 	return result
 
+#################### Heap Sort ( using heapq library ) #####################
+##### The link : https://hg.python.org/cpython/file/2.7/Lib/heapq.py #######
+
+from heapq import heappush,heappop
+
+def heapsort(iterable):
+	h = []
+	for value in iterable:
+	 	heappush(h, value)
+	return [heappop(h) for i in range(len(h))]
+
+################### Heap Sort ( Personal Implementation ) #################
+########################### Coming next ###################################
