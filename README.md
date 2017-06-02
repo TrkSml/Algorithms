@@ -13,3 +13,4 @@ My personal sorting implementations in Python :
 * Oleyami Sort ( reviewed Cocktail Sort )
 * Counting Sort
 * Radix Sort
+* Heap Sort
