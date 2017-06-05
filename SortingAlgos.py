@@ -53,43 +53,10 @@ def bubble_sort(list):
 
 def quick_sort(list):
 
-	def quick_sort_recursive_partitions(list,beginning,end):
+	quick_sort_recursive_partitions(list,0,len(list)-1)
+	return list
 
-		def recursive_partitions(list,beginning,end):
-			# def debug(list,first,last):
-			# 	return list[first:end]
-
-			#### print debug(list,beginning,end)
-
-			# beginning acting as a first pivot
-			value_of_pivot=list[beginning]
-
-			item_from_the_left=beginning+1
-			item_from_the_right=end
-
-			FLAG = False
-
-			while not FLAG :
-
-				while value_of_pivot<=list[item_from_the_right] and item_from_the_right>=item_from_the_left:
-        
-					#print list[item_from_the_right] , 'right'
-					item_from_the_right-=1
-
-				while value_of_pivot>=list[item_from_the_left] and item_from_the_right>=item_from_the_left:
-
-					#print list[item_from_the_left] , 'left'
-					item_from_the_left+=1
-
-				if item_from_the_right<item_from_the_left:
-					FLAG = True
-
-				else :
-					exchange(list,item_from_the_right,item_from_the_left)
-
-			exchange(list,item_from_the_right,beginning)
-
-			return item_from_the_right
+def quick_sort_recursive_partitions(list,beginning,end):
 
 		if beginning<end :
 			
@@ -99,10 +66,41 @@ def quick_sort(list):
 			quick_sort_recursive_partitions(list,split_point+1,end)
 
 
-	quick_sort_recursive_partitions(list,0,len(list)-1)
-	return list
+def recursive_partitions(list,beginning,end):
+			
+			value_of_pivot=list[beginning]
 
+			item_from_the_left=beginning+1
+			item_from_the_right=end
 
+			FLAG = False
+
+			while not FLAG :
+
+				try:
+					while value_of_pivot>=list[item_from_the_left] and item_from_the_right>=item_from_the_left:
+						print 'yes',list[item_from_the_left]
+						#print list[item_from_the_left] , 'left'
+						item_from_the_left+=1
+
+					while value_of_pivot<=list[item_from_the_right] and item_from_the_right>=item_from_the_left:
+	        
+						#print list[item_from_the_right] , 'right'
+						item_from_the_right-=1
+
+				except IndexError:
+					pass
+
+				if item_from_the_right<item_from_the_left:
+					FLAG = True
+
+				else :
+					exchange(list,item_from_the_left,item_from_the_right)
+
+			exchange(list,item_from_the_right,beginning)
+
+			return item_from_the_right
+		
 ##################### Shell Sort ##################
 
 def shell_sort(array):
@@ -298,4 +296,112 @@ def heapsort(iterable):
 	return [heappop(h) for i in range(len(h))]
 
 ################### Heap Sort ( Personal Implementation ) #################
-########################### Coming next ###################################
+
+class Node:
+	unity=8
+
+	def __init__(self,array,key):
+		
+		self.array=array
+		self.key=key
+		self.left=None
+		self.right=None
+		
+	def getnode(self):
+		
+		return self.array[self.key] if self.array[self.key] else 0
+
+	def get_key(self):
+		return self.key
+
+	def getleft(self):
+
+		try :
+			return self.array[2*self.key+1]
+		except IndexError:
+			return None
+
+	def getright(self):
+
+		try :
+			return self.array[2*self.key+2]
+		except IndexError:
+			return None
+
+	def find_parent_index(self):
+		if self.key==0:
+			return 0
+		return (self.key-1)/2
+
+	def find_parent(self):
+		return self.array[self.find_parent_index()]
+
+	def calculate_depth(self):
+		
+		if self.key==0 :
+			return 0
+
+		power=1
+		while self.key/(2**power-1):
+			power+=1
+	 	return power-1
+
+	def calculate_position(self):
+		
+	 	return self.key-self.calculate_depth()
+
+	def draw_for_clarity_node(self,space):
+		
+		print ' '*space+' '*(self.unity+1)+str(self.element_node())
+		print ' '*space+' '*(self.unity/2+1)+'/ '+' '*(self.unity/2+1)+'\ '
+		print ' '*space+' '*(self.unity/2-1)+str(self.getleft())+' '*self.unity+str(self.getright())
+
+
+
+class Heap:
+
+	def display_all_parents(self,list):
+		
+		count=1
+		while count <len(list):
+			node=Node(list,count)
+			print 'parent index: ',node.find_parent_index()
+			print 'parent element: ',node.find_parent()
+			print 'element: ',node.getnode()
+			print '\n'
+			count+=1
+
+	def partial_heap(self,index,array):
+
+		count=index
+		while(count>0):
+			node=Node(array,count)
+			if node.getnode()>node.find_parent():
+				exchange(array,count,node.find_parent_index())
+				count=node.find_parent_index()
+			else :
+				break
+				
+		return array
+
+	def build_max_heap(self,array):
+
+		for i in range(1,len(array)) :
+			array=self.partial_heap(i,array)
+
+		return array
+
+	def heap_sort(self,array):
+
+		if len(array)==1: return array
+		array=self.build_max_heap(array)
+		return self.heap_sort([array[-1]]+array[1:-1]) + [array[0]]
+	
+### Example :
+### >> list=[1, 3, 8, 1, 3, 6, 5, 4]
+### >> h=Heap()
+### >> h.heap_sort(list)
+### [1, 1, 3, 3, 4, 5, 6, 8]
+
+
+	
