@@ -359,17 +359,45 @@ class Node:
 
 
 class Heap:
-
-	def display_all_parents(self,list):
-		
+	root_space=50
+	#def __init__(self,data):
+	def display_all_elements(self,list):
 		count=1
 		while count <len(list):
 			node=Node(list,count)
-			print 'parent index: ',node.find_parent_index()
-			print 'parent element: ',node.find_parent()
+			#print 'parent index: ',node.find_parent_index()
+			#print 'parent element: ',node.find_parent()
 			print 'element: ',node.getnode()
+			print 'level and position: ',node.calculate_depth(),node.calculate_position()
 			print '\n'
 			count+=1
+
+	def display_tree_composition(self,list):
+
+		totalDepths=[]
+		totalNodes=[]
+		for i in range(len(list)):
+			node=Node(list,i)
+			totalDepths.append(node.calculate_depth())
+			totalNodes.append(node)
+
+		depth=1
+		decay_space=4
+		space=' '
+		print self.root_space*space,
+		while depth<len(totalNodes) :
+			if totalDepths[depth-1]==totalDepths[depth] :
+				print str(totalNodes[depth-1].getnode())+space*(decay_space-1),
+				depth+=1
+			else :
+				print totalNodes[depth-1].getnode()
+				print '\n'
+				self.root_space-=decay_space
+				print self.root_space*space,
+				depth+=1
+
+		print totalNodes[depth-1].getnode()
+
 
 	def partial_heap(self,index,array):
 
@@ -390,6 +418,7 @@ class Heap:
 			array=self.partial_heap(i,array)
 
 		return array
+
 
 	def heap_sort(self,array):
 
