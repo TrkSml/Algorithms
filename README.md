@@ -1,4 +1,4 @@
-# SortingAlgorithms
+# Sorting Algorithms
 
 My personal sorting implementations in Python :
 
@@ -15,3 +15,7 @@ My personal sorting implementations in Python :
 * Radix Sort
 * Heap Sort (using heapq library )
 * Heap Sort ( personal implementation )
+
+# Recursive Algorithms
+
+Trying to prove that nearly all usual functions can be written recursively.
