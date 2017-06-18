@@ -18,4 +18,4 @@ My personal sorting implementations in Python :
 
 # Recursive Algorithms
 
-Trying to prove that nearly all usual functions can be written recursively.
+" Can you always turn a recursive function into an iterative one? Yes, absolutely, and the Church-Turing thesis proves it if memory serves. In lay terms, it states that what is computable by recursive functions is computable by an iterative model (such as the Turing machine) and vice versa. The thesis does not tell you precisely how to do the conversion, but it does say that it's definitely possible. ". Found on StackOverflow
