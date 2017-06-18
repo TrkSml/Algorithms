@@ -5,16 +5,22 @@ A bit of recursion.
 
 """
 
+################################
 ### Calculating the sum of a list
+
 def sum_recur0(list):
   if len(list)==1:return list
   return list[-1]+sum(list[1:-1])+list[0]
+
 
 def sum_recur1(list):
   if len(list)==1:return list
   return list[-1]+sum(list[:-1])
 
+
+################################
 ### Sorting a list ( Selection Sort )
+
 def tri_min(list):
   if len(list)==1: return list
   min=0
@@ -23,7 +29,10 @@ def tri_min(list):
       list[i],list[min]=list[min],list[i]
   return [list[min]]+tri_min(list[1:])
 
+
+################################
 ### Sorting a list ( Another variant of Selection Sort )
+
 def tri_max(list):
   if len(list)==1: return list
   max=0
@@ -33,28 +42,37 @@ def tri_max(list):
   return tri_max(list[1:])+[list[max]]
 
 
+################################
 #### The minimum of a list
-def minim(L):
-   if len(L)==1 : return L[0]
-   if L[0] <L[1] : L.pop(1)
-   else : L.pop(0)
-   return minim(L)
+
+def minim(list):
+   if len(list)==1 : return list[0]
+   if list[0] <list[1] : list.pop(1)
+   else : list.pop(0)
+   return minim(list)
 
 
+#####################################
 #### The maximum of a list
-def maxim(L):
-  if len(L)==1: return L[0]
-  if L[0]>L[1]: L.pop(1)
-  else : L.pop(0)
-  return maxim(L)
+
+def maxim(list):
+  if len(list)==1: return list[0]
+  if list[0]>list[1]: list.pop(1)
+  else : list.pop(0)
+  return maxim(list)
 
 
+#####################################
 #### Sum of two integers
+
 def add(a,b):
   if b==0: return a
   return add(a+1,b-1)
 
+
+#####################################
 #### Greatest common divisor
+
 def pgcd(a,b):
   if a==0: return b
   if b==0: return a
@@ -62,7 +80,9 @@ def pgcd(a,b):
   else : return pgcd(b-a,a)
 
 
+  
 #### N°th Fibonacci term
+
 def fibonacci0(n):
   if n==0: return 1
   if n==1: return 1
@@ -70,7 +90,9 @@ def fibonacci0(n):
   return fibonacci0(n-1)+fibonacci0(n-2)
 
 
+#####################################
 #### N°th Fibonacci term ( efficient implementation)
+
 def fibonacci_efficient(n):
   if n==0:
     return (0,1)
@@ -84,7 +106,10 @@ def fibonacci_efficient(n):
 def fib(n):
   return fibonacci_efficace(n)[1]
 
+
+#####################################
 ##### multiplying two integers
+
 def multiply(a,b):
   if b==0: return 0
   # if b==1: return a
@@ -94,7 +119,9 @@ def multiply(a,b):
   return a+multiply(a,b-1)
 
 
+
 #### Reversing a string
+
 def reverse(string):
   if len(string)==1:
     return string
@@ -103,13 +130,17 @@ def reverse(string):
 
 
 
+#####################################
 #### Length of a string
+
 def length(string):
   if len(string)==1 : return 1
   return 1+length(string[1:])
 
 
+#####################################
 #### Occurrence of a caracter in a string
+
 def occur(carac,string):
 
     # The occurence of a caracter within a given string
@@ -120,7 +151,10 @@ def occur(carac,string):
       return occur(carac,string[1:])
 
 
+
+#####################################
 ##### Position of a caracter within a string
+
 def global_pos(carac,string):
 
     def occur_position(carac,string):
@@ -131,30 +165,40 @@ def global_pos(carac,string):
     # If there are two or more of the same character, the last one is determined
     if not string: return -1
     return occur_position(carac,string) if carac==string[-1] else global_pos(carac,string[:-1])
-        
-        
+     
+    
+
+#####################################
 #### calculating Exponentiation
+
 def power0(integer,pow):
   if pow==0: return 1
   return integer*power(integer,pow-1)
 
+
+#####################################
 #### calculating Exponentiation ( another variant )
+
 def power1(integer,pow):
   if pow==0:return 1
   if pow==1:return integer
   if pow%2: return power1(integer,(pow+1)/2)*power1(integer,pow/2)
   else : return power1(integer,pow/2)*power1(integer,pow/2)
-# def power_efficiency():
+  
+  
 
-
+#####################################
 #### Converting a decimal number to a binary number
+
 def decimal_to_binary(n):
   if not n: return '0'
   return int(str(decimal_to_binary(n/2)) + str(n%2))
 
 
 
+#####################################
 #### give a substring of a given string starting from the first occurrence of a given value
+
 def substring(el,list):
   if len(list)==0 :
     return False 
@@ -165,29 +209,37 @@ def substring(el,list):
     return substring(el,list[1:])
 
 
+#####################################
 ### generate a list up to the given element
+
 def isto(el):
   if el == 0 : return []
   return isto(el-1) + [el-1]
 
 
+#####################################
 ### map function
+
 def map(func,list):
   if len(list)==0 : return []
   return [func(list[0])] + map(func,list[1:]) 
 
+
+
+#####################################
 ### outpout the element wise product of two lists
 ### If len(list1)==a is superior to len(list2)==b then the product is calculated
 ### up to the last element of list2, giving a product list of b elements
+
 def product_element_wise(list1,list2):
   if len(list1)*len(list2)==0:
       return []
   return [list1[0]*list2[0]] + product_element_wise(list1[1:],list2[1:])
 
-#def maximum(list):
 
-
+#####################################
 ### calculating maximum using divide and conquer
+
 def max_divide_and_conquer(array,begin,end):
   if begin == end:
     return array[begin]
@@ -203,7 +255,10 @@ def maximum(list):
   return max_divide_and_conquer(list,0,len(list)-1)
 
 
+
+#####################################
 ### calculating minimum using divide and conquer
+
 def min_divide_and_conquer(array,begin,end):
   if begin == end:
     return array[begin]
@@ -214,12 +269,14 @@ def min_divide_and_conquer(array,begin,end):
     left=min_divide_and_conquer(array,begin, mid)
     right=min_divide_and_conquer(array,mid+1, end)
     return left if left<=right else right 
-
+  
 def minimum(list):
   return min_divide_and_conquer(list,0,len(list)-1)
 
 
+#####################################
 ### Check if an element exists using divide and conquer paradigm
+
 def find_element(el,array,begin,end):
     list=[]
     if begin == end:
@@ -236,6 +293,7 @@ def find_element_main(elem,list):
   return any(element for element in result)
 
 
+#####################################
 #### flatten a list recursively 
 
 import types
@@ -287,7 +345,9 @@ def main_Hanoi(N):
   return Hanoi(N,'A','B','C')
 
 
+#####################################
 #### output permutations of a list
+
 def output_permutations(list):
   output=[]
   if len(list)==1:  return [list]
@@ -301,10 +361,13 @@ def output_permutations(list):
               output.append(perm[:i] + list[:1] + perm[i:])
   return output
 
+
 #print output_permutations(range(10))
 
 
+#####################################
 ## string and a list permutations
+
 def permut(list):
   output=[]
 
@@ -325,7 +388,10 @@ def permut(list):
   return output
 
 
+
+#####################################
 #### Partitions of a positive integer
+
 def partitions(number):
   list_partitions=[]
 
@@ -346,7 +412,10 @@ def partitions(number):
   return list_partitions
 
 
+
+#####################################
 #### Another solution to the minimum coin change problem
+
 def control(coins,integers):
   coins_set=set(coins)
   integers_set=set(integers)
@@ -374,6 +443,9 @@ def coin_changes(number,coins):
   list_partitions.append([number])
   return list_partitions
 
+
+
+#####################################
 #### function to test the different execution times
 def see_execution_time(begin1,end1,begin2,end2):
  
@@ -385,6 +457,8 @@ def see_execution_time(begin1,end1,begin2,end2):
 #see_execution_time(begin1,end1,begin2,end2)
 
 
+
+#####################################
 #### different paths from the top to the bottom of a triangle-like list like so :
 ###
 # tree=[[55],
@@ -402,6 +476,7 @@ def possible_paths(tree):
       for last_element in tree[-1]:
           paths.append(el + [last_element])
   return paths
+  
   
 ### Maximum path 
 def max_path(tree):
